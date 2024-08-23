@@ -15,10 +15,66 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
         <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/bootstrap-icons.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/owl.carousel.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/owl.theme.default.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/templatemo-medic-care.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/bootstrap-icons.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/owl.carousel.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/owl.theme.default.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/templatemo-medic-care.css') }}" rel="stylesheet">
+
+        <style>
+            .send {
+                display: inline-block;
+                width: 150px;
+                height: 50px;
+                border-radius: 10px;
+                border: 1px solid #03045e;
+                position: relative;
+                overflow: hidden;
+                transition: all 0.5s ease-in;
+                z-index: 1;
+                background-color: transparent;
+                cursor: pointer;
+                margin-left: 40%;
+            }
+
+            .send::before,
+            .send::after {
+                content: '';
+                position: absolute;
+                top: 0;
+                width: 0;
+                height: 100%;
+                transform: skew(15deg);
+                transition: all 0.5s;
+                overflow: hidden;
+                z-index: -1;
+            }
+
+            .send::before {
+                left: -10px;
+                background: #240046;
+            }
+
+            .send::after {
+                right: -10px;
+                background: #5a189a;
+            }
+
+            .send:hover::before,
+            .send:hover::after {
+                width: 58%;
+            }
+
+            .send:hover span {
+                color: #e0aaff;
+                transition: 0.3s;
+            }
+
+            .send span {
+                color: #03045e;
+                font-size: 18px;
+                transition: all 0.3s ease-in;
+            }
+        </style>
 <!--
 
 TemplateMo 566 Medic Care
@@ -504,15 +560,39 @@ https://templatemo.com/tm-566-medic-care
             <section class="section-padding pb-0" id="contact">
                 <div class="container">
                     <div class="row">
-
                         <div class="col-12">
-                            <h2 class="text-center mb-lg-5 mb-4">Contact information</h2>
-                            <h6 class="text-center mb-lg-3 mb-2">Lydia.bouzar-benlabiod@acadiau.ca</h6>
+                            <h2 class="text-center mb-lg-5 mb-4">Contact</h2>
+                            {{-- <h6 class="text-center mb-lg-3 mb-2">Lydia.bouzar-benlabiod@acadiau.ca</h6> --}}
                         </div>
 
+                        <div class="col-lg-8 mx-auto">
+                            <form method="POST" action="{{ route('contact.send') }}">
+                                @csrf
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Your Email Address</label>
+                                    <input type="email" class="form-control" id="email" name="email" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="message" class="form-label">Your Message</label>
+                                    <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+                                </div>
+                                    <button class="send">
+                                    <span> Send
+                                    </span>
+                                    </button>
+                            </form>
+
+                            @if(session('success'))
+                                <div class="alert alert-success mt-3">
+                                    {{ session('success') }}
+                                </div>
+                            @endif
+                        </div>
                     </div>
                 </div>
             </section>
+
+
 
         </main>
 
