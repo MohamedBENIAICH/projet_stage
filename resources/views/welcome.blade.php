@@ -343,6 +343,18 @@ https://templatemo.com/tm-566-medic-care
                 </div>
             </section>
 
+            <section class="section-padding pb-0" id="people">
+                <div class="container">
+                    <h2 class="mb-lg-3 mb-3">
+                        Registration for IRI'24 is open.
+                    </h2>
+                        <div class="col-12">
+                            Please visit : <a href="https://web.cvent.com/event/b14a76c5-aa57-42e1-a112-0d3ac74baba0/summary" target="_blanck"> summary</a> <br>
+                            For more informations , check <a href="https://homepages.uc.edu/~niunn/IRI24/registration.html" target="_blanck">Registration info</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
             <section class="section-padding pb-0" id="people">
                 <div class="container">
